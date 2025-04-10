@@ -13,6 +13,9 @@ float calcSTAM(float t, float sp){ //t: time, sp: standard percentage
     return (t+sp)/2;
 }
 
+float standardize(float val, float v100){
+    return (val*100)/v100;
+}
 
 int main(){
     float percentage, timeMin;
@@ -31,6 +34,7 @@ int main(){
     float STAM = calcSTAM(timeMin, standardizePercent(percentage));
 
     cout << "Your STAM is: " << STAM << endl;
+    cout << "Your STAM in percentage is: " << standardize(STAM, 6900) << endl;
 
     return 0;
 }
