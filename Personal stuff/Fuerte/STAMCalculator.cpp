@@ -8,9 +8,12 @@ using namespace std;
 float standardizePercent(float p){ //p: percentage
     return (p*6900)/600;
 }
+float standardizeTicks(int ticks){
+    return ((float)ticks*6900)/21;
+}
 
-float calcSTAM(float t, float sp){ //t: time, sp: standard percentage
-    return (t+sp)/2;
+float calcSTAM(float sticks, float sp, float t){ //sticks}: standard ticks, sp: standard percentage, t: time
+    return (sticks+t+sp)/3;
 }
 
 float standardize(float val, float v100){
@@ -19,6 +22,7 @@ float standardize(float val, float v100){
 
 int main(){
     float percentage, timeMin;
+    int ticks;
     cout << "Hi there! Give me the values and I'll do the rest :)" << endl;
     cout << "Time in minutes: " << endl;
 
@@ -28,10 +32,13 @@ int main(){
 
     cin >> percentage;
 
+    cout << "Cool, now give me the ticks, please: " << endl;
+
+    cin >> ticks;
+
     cout << "Awesome, I'm doing the magic..." << endl;
 
-
-    float STAM = calcSTAM(timeMin, standardizePercent(percentage));
+    float STAM = calcSTAM(standardizeTicks(ticks), standardizePercent(percentage), timeMin);
 
     cout << "Your STAM is: " << STAM << endl;
     cout << "Your STAM in percentage is: " << standardize(STAM, 6900) << endl;
