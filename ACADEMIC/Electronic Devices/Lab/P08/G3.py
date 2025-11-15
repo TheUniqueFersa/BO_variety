@@ -13,11 +13,11 @@ ID5 = [0, 8.1, 12.5, 20, 22.5, 22.5, 22.5, 22.5, 22.5]
 
 #plt.plot(Vsd, ID1, color='red', label='VGS = 0.9[V]', marker='o')
 
-plt.plot(VSD, ID1, 'o-', label='ID1')
-plt.plot(VSD, ID2, 'o-', label='ID2')
-plt.plot(VSD, ID3, 'o-', label='ID3')
-plt.plot(VSD, ID4, 'o-', label='ID4')
-plt.plot(VSD, ID5, 'o-', label='ID5')
+plt.plot(VSD, ID1, 'o-', label='V_GS = ')
+plt.plot(VSD, ID2, 'o-', label='V_GS = ')
+plt.plot(VSD, ID3, 'o-', label='V_GS = ')
+plt.plot(VSD, ID4, 'o-', label='V_GS = ')
+plt.plot(VSD, ID5, 'o-', label='V_GS = ')
 
 plt.xlabel('V_SD (V)')
 plt.ylabel('I_D (mA)')
