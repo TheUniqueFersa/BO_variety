@@ -24,7 +24,7 @@ def calculate_sleep_time(wake_hour, wake_minute=0):
 
 if __name__ == "__main__":
     # --- CONFIGURATION ---
-    WAKE_UP_HOUR = 8  # 24-hour format (3 = 3:00 AM, 15 = 3:00 PM)
+    WAKE_UP_HOUR = 3  # 24-hour format (3 = 3:00 AM, 15 = 3:00 PM)
     WAKE_UP_MINUTE = 0
     # ---------------------
     

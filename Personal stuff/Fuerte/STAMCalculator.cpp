@@ -1,7 +1,10 @@
-// First Version. 10/04/2025
-
 #include <iostream>
 #define endl '\n'
+#define V_100_T 1020
+#define V_100_P 100
+#define V_100_G 6
+#define UTIL_WEEK 7
+
 
 using namespace std;
 
@@ -12,36 +15,53 @@ float standardizeTicks(int ticks){
     return ((float)ticks*6900)/21;
 }
 
-float calcSTAM(float sticks, float sp, float t){ //sticks}: standard ticks, sp: standard percentage, t: time
-    return (sticks+t+sp)/3;
-}
 
-float standardize(float val, float v100){
+// ----
+//standardize
+float stand(float val, float v100){
     return (val*100)/v100;
 }
 
+float prom(float p, float q){
+    return p/q;
+}
+// TODO: change to list so it can actually sum the values in p
+float calcSTAM(float p_x, float p_g, float p_t){ //sticks}: standard ticks, sp: standard percentage, t: time
+    return prom(p_x+p_g+p_t, 3);
+}
+
+
+
+
 int main(){
-    float percentage, timeMin;
-    int ticks;
+    
+    
+    float x, x_0; //x: XCH achieved, x_0: XCH stablished
+    float t; //t: encap time
+    float g; //g: gamma (TTT)
+    float p_x, p_t, p_g; //p: porcentage
     cout << "Hi there! Give me the values and I'll do the rest :)" << endl;
+    cout << "x and x_0 please: " << endl;
+
+    cin >> x >> x_0;
+    
     cout << "Time in minutes: " << endl;
 
-    cin >> timeMin;
+    cin >> t;
+    
+    cout << "Cool, now give me the TTT, please: " << endl;
 
-    cout << "Perfect, now the percentage please: " << endl;
-
-    cin >> percentage;
-
-    cout << "Cool, now give me the ticks, please: " << endl;
-
-    cin >> ticks;
+    cin >> g;
 
     cout << "Awesome, I'm doing the magic..." << endl;
 
-    float STAM = calcSTAM(standardizeTicks(ticks), standardizePercent(percentage), timeMin);
+    //For a certain day
+    p_x = stand(x, x_0);
+    p_t = stand(t, V_100_T);
+    p_g = stand(g, V_100_G);
+    float STAM = calcSTAM(p_x, p_t, p_g);
 
     cout << "Your STAM is: " << STAM << endl;
-    cout << "Your STAM in percentage is: " << standardize(STAM, 6900) << endl;
-
+    cout << "Your ENV is: " << 100 - STAM << endl;
     return 0;
 }
